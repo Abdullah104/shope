@@ -47,7 +47,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    print('dsafijpasfdpifojasdpjidsapsadfij');
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
