@@ -16,7 +16,18 @@ class Shope extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Montserrat',
       ),
-      home: const SplashScreen(),
+      home: GestureDetector(
+        onTap: () => _unfocus(context),
+        child: const SplashScreen(),
+      ),
     );
+  }
+
+  void _unfocus(BuildContext context) {
+    final currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.unfocus();
+    }
   }
 }

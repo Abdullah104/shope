@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../app_properties.dart';
+
 class AuthenticationForm extends StatelessWidget {
   final List<Widget> children;
   final String prompt;
   final VoidCallback onPressed;
+  final double callToActionOffset;
 
   const AuthenticationForm({
     super.key,
     required this.children,
     required this.prompt,
     required this.onPressed,
+    this.callToActionOffset = 0,
   });
 
   @override
@@ -41,22 +45,14 @@ class AuthenticationForm extends StatelessWidget {
           ),
         ),
         Transform.translate(
-          offset: const Offset(0, -callToActionHeight / 2),
+          offset: Offset(0, (-callToActionHeight / 2) + callToActionOffset),
           child: InkWell(
             onTap: onPressed,
             child: Container(
               width: width / 2,
               height: callToActionHeight,
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color.fromRGBO(236, 60, 3, 1),
-                    Color.fromRGBO(234, 60, 3, 1),
-                    Color.fromRGBO(216, 78, 16, 1),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
+                gradient: mainButton,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.16),
